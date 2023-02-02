@@ -34,5 +34,7 @@ android {
 dependencies {
     kotlinDependencies()
     coroutineCoreDependency()
-
+    encryptedPrefsDependencies()
+    koinDependencies()
+    timberDependencies()
 }
