@@ -1,4 +1,4 @@
-package com.bottlerocketstudios.launchpad.utils
+package com.bottlerocketstudios.launchpad.utils.coroutine
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
