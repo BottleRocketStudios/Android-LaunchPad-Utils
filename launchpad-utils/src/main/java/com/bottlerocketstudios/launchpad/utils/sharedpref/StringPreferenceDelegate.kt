@@ -1,4 +1,4 @@
-package com.bottlerocketstudios.launchpad.utils
+package com.bottlerocketstudios.launchpad.utils.sharedpref
 
 import android.content.SharedPreferences
 import kotlin.properties.ReadWriteProperty
