@@ -1,0 +1,3 @@
+rootProject.name = "Android-LaunchPad-Utils"
+include ':app'
+include ':launchpad-utils'
