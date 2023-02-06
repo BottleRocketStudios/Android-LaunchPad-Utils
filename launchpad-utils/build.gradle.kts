@@ -37,4 +37,5 @@ dependencies {
     encryptedPrefsDependencies()
     koinDependencies()
     timberDependencies()
+    firebaseAnalyticsDependencies()
 }
