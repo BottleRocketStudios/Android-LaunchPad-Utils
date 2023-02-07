@@ -8,6 +8,7 @@ interface FirebaseAnalyticsInterface : AnalyticsInterface {
     val sessionId: Task<Long?>
     val firebaseInstanceId: String
     val appInstanceId: Task<String?>
+    fun resetAnalyticsData()
     fun setDefaultEventParams(params: Bundle?)
     fun setFirebaseConsent(consentMap: Map<FirebaseAnalytics.ConsentType, FirebaseAnalytics.ConsentStatus>)
     fun setAnalyticsCollectionEnabled(enabled: Boolean)

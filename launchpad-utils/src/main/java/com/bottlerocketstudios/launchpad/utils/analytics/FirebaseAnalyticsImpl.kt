@@ -27,17 +27,29 @@ class FirebaseAnalyticsImpl : FirebaseAnalyticsInterface, KoinComponent {
 
     override fun resetAnalyticsData() = analytics.resetAnalyticsData()
 
-    override fun setUserProperty(propertyName: String, value: String) =
-        analytics.setUserProperty(propertyName, value)
+    override fun setUserProperty(userProperty: UserProperty) =
+        analytics.setUserProperty(userProperty.propertyName, userProperty.propertyValue)
 
-    override fun logEvent(eventName: String, params: Bundle?) =
-        analytics.logEvent(eventName, params)
+    override fun logEvent(event: AnalyticsEvent) {
+        val paramBundle: Bundle? = if (event.params != null) Bundle().apply {
+            event.params?.forEach {
+                putString(
+                    it.key,
+                    it.value.toString()
+                )
+            }
+        } else null
+        analytics.logEvent(event.eventName, paramBundle)
+    }
 
-    override fun setDefaultEventParams(params: Bundle?) = analytics.setDefaultEventParameters(params)
+    override fun setDefaultEventParams(params: Bundle?) =
+        analytics.setDefaultEventParameters(params)
 
-    override fun setFirebaseConsent(consentMap: Map<ConsentType, ConsentStatus>) = analytics.setConsent(consentMap)
+    override fun setFirebaseConsent(consentMap: Map<ConsentType, ConsentStatus>) =
+        analytics.setConsent(consentMap)
 
-    override fun setAnalyticsCollectionEnabled(enabled: Boolean) = analytics.setAnalyticsCollectionEnabled(enabled)
+    override fun setAnalyticsCollectionEnabled(enabled: Boolean) =
+        analytics.setAnalyticsCollectionEnabled(enabled)
 
     override fun setUserId(id: String) = analytics.setUserId(id)
 }

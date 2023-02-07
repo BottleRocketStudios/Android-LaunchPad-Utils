@@ -1,9 +1,21 @@
 package com.bottlerocketstudios.launchpad.utils.analytics
 
-import android.os.Bundle
-
+/** Base Analytics interface to be implemented by interfaces for specific SDKs like [FirebaseAnalyticsInterface].*/
 interface AnalyticsInterface {
-    fun resetAnalyticsData()
-    fun setUserProperty(propertyName: String, value: String)
-    fun logEvent(eventName: String, params: Bundle?) //TODO - how to make these last 2 functions more generic rather than echoing Firebase's impl in particular?
+
+    /** The goal is to create classes for each user property that gets logged */
+    fun setUserProperty(userProperty: UserProperty)
+    fun logEvent(event: AnalyticsEvent)
+}
+
+class NewScreenLoadedEvent : AnalyticsEvent {
+    override val eventName: String
+        get() = "new_screen"
+    override val params: Map<String, Any>
+        get() = mapOf("hello" to "hello")
+}
+
+class UserPreferredLanguageProperty(override val propertyValue: String) : UserProperty {
+    override val propertyName: String
+        get() = "preferred_language"
 }
