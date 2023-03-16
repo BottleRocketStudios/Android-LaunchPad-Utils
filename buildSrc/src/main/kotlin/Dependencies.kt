@@ -1,4 +1,3 @@
-import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import java.util.Locale
 
@@ -157,18 +156,13 @@ private object Libraries {
     // https://github.com/JakeWharton/timber/releases
     const val TIMBER = "com.jakewharton.timber:timber:5.0.1"
 
-    // Chucker
-    // https://medium.com/@cortinico/introducing-chucker-18f13a51b35d
-    // https://github.com/ChuckerTeam/chucker/blob/develop/CHANGELOG.md
-    // https://github.com/ChuckerTeam/chucker/releases
-    private const val CHUCKER_VERSION = "3.5.2"
-    const val CHUCKER = "com.github.ChuckerTeam.Chucker:library:$CHUCKER_VERSION"
-    const val CHUCKER_NO_OP = "com.github.ChuckerTeam.Chucker:library-no-op:$CHUCKER_VERSION"
-
     // Security Crypto
     // Used for EncryptedSharedPrefs
     // https://developer.android.com/jetpack/androidx/releases/security
     const val SECURITY_CRYPTO = "androidx.security:security-crypto:1.0.0"
+
+    // Firebase Analytics
+    const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx:21.2.0"
 }
 
 /**
@@ -244,13 +238,8 @@ fun DependencyHandler.encryptedPrefsDependencies() {
     implementation(Libraries.SECURITY_CRYPTO)
 }
 
-fun DependencyHandler.chuckerDependencies(devConfigurations: List<Configuration>, productionConfiguration: Configuration) {
-    // Only add dependency for dev configurations in the list
-    devConfigurations.forEach { devConfiguration: Configuration ->
-        add(devConfiguration.name, Libraries.CHUCKER)
-    }
-    // Production configuration is a no-op
-    add(productionConfiguration.name, Libraries.CHUCKER_NO_OP) // note the releaseImplementation no-op
+fun DependencyHandler.firebaseAnalyticsDependencies() {
+    implementation(Libraries.FIREBASE_ANALYTICS)
 }
 
 // Test specific dependency groups
