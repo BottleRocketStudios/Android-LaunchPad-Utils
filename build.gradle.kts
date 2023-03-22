@@ -25,10 +25,24 @@ allprojects {
     repositories {
         // Uncomment mavenLocal to use local versions of libraries.
         // This is used for library development of LaunchPad
-        mavenLocal()
+//        mavenLocal()
         google()
         mavenCentral()
         maven(url = "https://jitpack.io")
+    }
+}
+
+subprojects {
+    apply(plugin = Config.ApplyPlugins.KT_LINT)
+
+    // See README.md for more info on ktlint as well as https://github.com/JLLeitschuh/ktlint-gradle#configuration
+    ktlint {
+        version.set(Config.KTLINT_VERSION)
+        debug.set(true) // useful for debugging
+        verbose.set(true) // useful for debugging
+        android.set(true)
+        outputToConsole.set(true)
+        ignoreFailures.set(false)
     }
 }
 
