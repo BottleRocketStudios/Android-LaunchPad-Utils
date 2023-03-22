@@ -32,6 +32,33 @@ android {
             )
         }
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "com.github.BottleRocketStudios"
+                artifactId = "Android-LaunchPad-Utils"
+                version = "0.0.1"
+
+                afterEvaluate {
+                    from(components["release"])
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = "myrepo"
+                url = uri("${project.buildDir}/repo")
+            }
+        }
+    }
 }
 
 dependencies {
