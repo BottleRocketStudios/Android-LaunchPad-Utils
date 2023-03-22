@@ -1,5 +1,5 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
-import java.util.Locale
+import java.util.*
 
 // Provides dependencies that can be used throughout the project build.gradle files
 
@@ -9,7 +9,7 @@ import java.util.Locale
 // https://kotlinlang.org/docs/reference/whatsnew15.html
 // https://kotlinlang.org/docs/releases.html#release-details
 // TODO: Update corresponding buildSrc/build.gradle.kts value when updating this version!
-private const val KOTLIN_VERSION = "1.8.0"
+private const val KOTLIN_VERSION = "1.7.20"
 private const val KOTLIN_COROUTINES_VERSION = "1.6.4"
 
 /**
@@ -61,9 +61,11 @@ object Config {
         const val ANDROID_LIBRARY = "com.android.library"
         const val KT_LINT = "org.jlleitschuh.gradle.ktlint"
         const val DETEKT = "io.gitlab.arturbosch.detekt"
+
         object Kotlin {
             const val ANDROID = "android"
         }
+
         const val MAVEN_PUBLISH = "maven-publish"
     }
 
@@ -82,7 +84,9 @@ object Config {
 
     // Gradle versions plugin configuration: https://github.com/ben-manes/gradle-versions-plugin#revisions
     fun isNonStable(version: String): Boolean {
-        val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase(Locale.ENGLISH).contains(it) }
+        val stableKeyword = listOf("RELEASE", "FINAL", "GA").any {
+            version.toUpperCase(Locale.ENGLISH).contains(it)
+        }
         val regex = "^[0-9,.v-]+(-r)?$".toRegex()
         val isStable = stableKeyword || regex.matches(version)
         return isStable.not()
@@ -113,8 +117,10 @@ private object Libraries {
     // https://github.com/Kotlin/kotlinx.coroutines/blob/master/CHANGES.md
     // https://github.com/Kotlin/kotlinx.coroutines/releases
 
-    const val KOTLINX_COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$KOTLIN_COROUTINES_VERSION"
-    const val KOTLINX_COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$KOTLIN_COROUTINES_VERSION"
+    const val KOTLINX_COROUTINES_CORE =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:$KOTLIN_COROUTINES_VERSION"
+    const val KOTLINX_COROUTINES_ANDROID =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:$KOTLIN_COROUTINES_VERSION"
 
     //// Koin
     // https://github.com/InsertKoinIO/koin/blob/master/CHANGELOG.md
@@ -135,8 +141,14 @@ private object Libraries {
     // https://github.com/square/retrofit/releases
     private const val RETROFIT_VERSION = "2.9.0"
     const val RETROFIT = "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
-    const val RETROFIT_SCALARS_CONVERTER = "com.squareup.retrofit2:converter-scalars:$RETROFIT_VERSION"
+    const val RETROFIT_SCALARS_CONVERTER =
+        "com.squareup.retrofit2:converter-scalars:$RETROFIT_VERSION"
     const val RETROFIT_MOSHI_CONVERTER = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VERSION"
+
+    //// LaunchPad-Utils-Domain
+    private const val LAUNCHPAD_UTILS_VERSION = "0.0.1"
+    const val LAUNCHPAD_UTILS_DOMAIN =
+        "com.github.BottleRocketStudios:Android-LaunchPad-Utils-Domain:$LAUNCHPAD_UTILS_VERSION"
 
     //// Moshi
     // https://github.com/square/moshi/blob/master/CHANGELOG.md
@@ -150,7 +162,8 @@ private object Libraries {
 
     //// Utility
     // https://github.com/BottleRocketStudios/Android-CustomLintRules/releases
-    const val BR_CUSTOM_ANDROID_LINT_RULES = "com.github.BottleRocketStudios:Android-CustomLintRules:1.0.0"
+    const val BR_CUSTOM_ANDROID_LINT_RULES =
+        "com.github.BottleRocketStudios:Android-CustomLintRules:1.0.0"
 
     // https://github.com/JakeWharton/timber/blob/master/CHANGELOG.md
     // https://github.com/JakeWharton/timber/releases
@@ -215,6 +228,10 @@ fun DependencyHandler.retrofitDependencies() {
     implementation(Libraries.RETROFIT)
     implementation(Libraries.RETROFIT_SCALARS_CONVERTER)
     implementation(Libraries.RETROFIT_MOSHI_CONVERTER)
+}
+
+fun DependencyHandler.launchpadUtils() {
+    implementation(Libraries.LAUNCHPAD_UTILS_DOMAIN)
 }
 
 fun DependencyHandler.moshiDependencies() {

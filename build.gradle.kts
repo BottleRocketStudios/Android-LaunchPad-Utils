@@ -17,11 +17,15 @@ plugins {
 }
 
 detekt {
-    config = files("$rootDir/config/detekt/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
+    config =
+        files("$rootDir/config/detekt/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
 }
 
 allprojects {
     repositories {
+        // Uncomment mavenLocal to use local versions of libraries.
+        // This is used for library development of LaunchPad
+        mavenLocal()
         google()
         mavenCentral()
         maven(url = "https://jitpack.io")

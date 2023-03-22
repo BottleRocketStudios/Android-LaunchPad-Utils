@@ -1,6 +1,7 @@
 package com.bottlerocketstudios.launchpad.utils.analytics
 
 import android.os.Bundle
+import com.bottlerocketstudios.launchpad.utils.domain.analytics.AnalyticsInterface
 import com.google.android.gms.tasks.Task
 import com.google.firebase.analytics.FirebaseAnalytics
 

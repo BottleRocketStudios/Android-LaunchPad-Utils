@@ -2,6 +2,8 @@ package com.bottlerocketstudios.launchpad.utils.analytics
 
 import android.content.Context
 import android.os.Bundle
+import com.bottlerocketstudios.launchpad.utils.domain.analytics.AnalyticsEvent
+import com.bottlerocketstudios.launchpad.utils.domain.analytics.UserProperty
 import com.google.android.gms.tasks.Task
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.FirebaseAnalytics.ConsentStatus
