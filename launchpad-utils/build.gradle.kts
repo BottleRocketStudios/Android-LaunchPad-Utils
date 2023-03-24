@@ -29,9 +29,31 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "com.github.BottleRocketStudios"
+                artifactId = "Android-LaunchPad-Utils"
+                version = "0.0.3"
+
+                afterEvaluate {
+                    from(components["release"])
+                }
+            }
+        }
+    }
 }
 
 dependencies {
+    launchpadDependences()
     kotlinDependencies()
     coroutineCoreDependency()
     encryptedPrefsDependencies()

@@ -3,6 +3,7 @@ package com.bottlerocketstudios.launchpad.utils.sharedpref
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import com.bottlerocketstudios.launchpad.utils.domain.sharedpref.PreferencesInterface
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

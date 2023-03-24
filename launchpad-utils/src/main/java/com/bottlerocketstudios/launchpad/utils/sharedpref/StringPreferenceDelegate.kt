@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-class StringPreferenceDelegate(private val sharedPrefs: SharedPreferences?): ReadWriteProperty<Any, String> {
+class StringPreferenceDelegate(private val sharedPrefs: SharedPreferences?) : ReadWriteProperty<Any, String> {
     override fun getValue(thisRef: Any, property: KProperty<*>) = sharedPrefs?.getString(property.name, "").orEmpty()
 
     override fun setValue(thisRef: Any, property: KProperty<*>, value: String) {
