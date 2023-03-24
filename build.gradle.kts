@@ -27,3 +27,21 @@ allprojects {
         maven(url = "https://jitpack.io")
     }
 }
+
+subprojects {
+    apply(plugin = Config.ApplyPlugins.KT_LINT)
+
+    // See README.md for more info on ktlint as well as https://github.com/JLLeitschuh/ktlint-gradle#configuration
+    ktlint {
+        version.set(Config.KTLINT_VERSION)
+        debug.set(true) // useful for debugging
+        verbose.set(true) // useful for debugging
+        android.set(true)
+        outputToConsole.set(true)
+        ignoreFailures.set(false)
+    }
+}
+
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
+}
