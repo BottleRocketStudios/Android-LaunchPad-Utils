@@ -2,6 +2,7 @@ package com.bottlerocketstudios.launchpad.utils.logger
 
 import android.util.Log
 import com.bottlerocketstudios.launchpad.utils.BuildConfigProvider
+import com.bottlerocketstudios.launchpad.utils.domain.logger.LoggingManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
