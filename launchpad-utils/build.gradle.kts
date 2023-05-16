@@ -53,7 +53,7 @@ afterEvaluate {
 }
 
 dependencies {
-    launchpadDependences()
+    launchpadDependencies()
     kotlinDependencies()
     coroutineCoreDependency()
     encryptedPrefsDependencies()

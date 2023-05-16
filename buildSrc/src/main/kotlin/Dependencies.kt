@@ -139,7 +139,8 @@ private object Libraries {
     const val RETROFIT_MOSHI_CONVERTER = "com.squareup.retrofit2:converter-moshi:$RETROFIT_VERSION"
 
     //// Launchpad
-    private const val LAUNCHPAD_VERSION = "0.0.3"
+    // https://github.com/BottleRocketStudios/Android-LaunchPad-Utils-Domain
+    private const val LAUNCHPAD_VERSION = "0.0.4"
     const val LAUNCHPAD = "com.github.BottleRocketStudios:Android-LaunchPad-Utils-Domain:$LAUNCHPAD_VERSION"
 
     //// Moshi
@@ -221,7 +222,7 @@ fun DependencyHandler.retrofitDependencies() {
     implementation(Libraries.RETROFIT_MOSHI_CONVERTER)
 }
 
-fun DependencyHandler.launchpadDependences() {
+fun DependencyHandler.launchpadDependencies() {
     implementation(Libraries.LAUNCHPAD)
 }
 
