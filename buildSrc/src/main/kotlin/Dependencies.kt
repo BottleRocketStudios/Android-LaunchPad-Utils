@@ -140,7 +140,7 @@ private object Libraries {
 
     //// Launchpad
     // https://github.com/BottleRocketStudios/Android-LaunchPad-Utils-Domain
-    private const val LAUNCHPAD_VERSION = "0.0.3"
+    private const val LAUNCHPAD_VERSION = "0.0.4"
     const val LAUNCHPAD = "com.github.BottleRocketStudios:Android-LaunchPad-Utils-Domain:$LAUNCHPAD_VERSION"
 
     //// Moshi
